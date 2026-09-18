@@ -192,6 +192,8 @@ def run_all_tests():
     t4_text = samples[4]
     corrected_4, changes_4 = spell.correct(t4_text)
     # Stage 1: very little or no corrections
+    if len(changes_4) > 0:
+        print("UNEXPECTED CHANGES:", changes_4)
     assert len(changes_4) == 0, f"Expected 0 spelling changes on Test 4, got {len(changes_4)}"
     
     disc_4 = discourse.analyze(t4_text, nlp(corrected_4))

@@ -6,13 +6,18 @@ NLTK_VOCAB = set()
 NLTK_FREQ = Counter()
 
 try:
+    import nltk
+    for resource in ('words', 'brown', 'wordnet', 'omw-1.4'):
+        try:
+            nltk.data.find('corpora/' + resource)
+        except LookupError:
+            nltk.download(resource, quiet=True)
+            
     from nltk.corpus import words as nltk_words, brown, wordnet as wn
-    # Load wordnet lemmas and words corpus
     for w in wn.words():
         NLTK_VOCAB.add(w.lower())
     for w in nltk_words.words():
         NLTK_VOCAB.add(w.lower())
-    # Real frequency distribution from 1M+ words of Brown corpus
     for w in brown.words():
         w_lower = w.lower()
         NLTK_FREQ[w_lower] += 1
@@ -33,6 +38,7 @@ IMMUNE_TERMS = {
     'v1', 'v2', 'v3', 'bert', 'gpt', 'llm', 'vlm', 'resnet', 'vit',
     'cky', 'cfg', 'svo', 'pos', 'ner', 'wsd', 'main_nlp_flow', 'cache',
     'cached', 'database', 'sensors', 'satellites', 'satellite',
+    'rahul', 'arjun', 'riya', 'neha', 'aman'
 }
 
 # Authentic phonetic / typographic error mappings for high-precision corrections
