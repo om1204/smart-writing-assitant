@@ -16,7 +16,7 @@ A project-level implementation of the assignment **Building a Smart Reading & Wr
 ### Backend
 ```bash
 pip install -r requirements.txt
-uvicorn api_server:app --reload --port 8000
+.venv\Scripts\uvicorn.exe api_server:app --reload --port 8000
 ```
 The spaCy model is installed by the requirements URL.
 
